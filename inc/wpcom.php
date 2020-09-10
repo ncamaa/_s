@@ -4,7 +4,7 @@
  *
  * This file is centrally included from `wp-content/mu-plugins/wpcom-theme-compat.php`.
  *
- * @package _s
+ * @package pixcell_medical
  */
 
 /**
@@ -12,7 +12,7 @@
  *
  * @global array $themecolors
  */
-function _s_wpcom_setup() {
+function pixcell_medical_wpcompixcell_medicaletup() {
 	global $themecolors;
 
 	// Set theme colors for third party services.
@@ -28,4 +28,4 @@ function _s_wpcom_setup() {
 		);
 	}
 }
-add_action( 'after_setup_theme', '_s_wpcom_setup' );
+add_action( 'afterpixcell_medicaletup_theme', 'pixcell_medical_wpcompixcell_medicaletup' );

@@ -4,21 +4,21 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package _s
+ * @package pixcell_medical
  */
 
-if ( ! function_exists( '_s_posted_on' ) ) :
+if ( ! function_exists( 'pixcell_medical_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
-	function _s_posted_on() {
-		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	function pixcell_medical_posted_on() {
+		$timepixcell_medicaltring = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+			$timepixcell_medicaltring = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 		}
 
-		$time_string = sprintf(
-			$time_string,
+		$timepixcell_medicaltring = sprintf(
+			$timepixcell_medicaltring,
 			esc_attr( get_the_date( DATE_W3C ) ),
 			esc_html( get_the_date() ),
 			esc_attr( get_the_modified_date( DATE_W3C ) ),
@@ -27,8 +27,8 @@ if ( ! function_exists( '_s_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', '_s' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+			esc_html_x( 'Posted on %s', 'post date', 'pixcell_medical' ),
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $timepixcell_medicaltring . '</a>'
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -36,14 +36,14 @@ if ( ! function_exists( '_s_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( '_s_posted_by' ) ) :
+if ( ! function_exists( 'pixcell_medical_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function _s_posted_by() {
+	function pixcell_medical_posted_by() {
 		$byline = sprintf(
 			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', '_s' ),
+			esc_html_x( 'by %s', 'post author', 'pixcell_medical' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -52,35 +52,35 @@ if ( ! function_exists( '_s_posted_by' ) ) :
 	}
 endif;
 
-if ( ! function_exists( '_s_entry_footer' ) ) :
+if ( ! function_exists( 'pixcell_medical_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function _s_entry_footer() {
+	function pixcell_medical_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', '_s' ) );
+			$categories_list = get_the_category_list( esc_html__( ', ', 'pixcell_medical' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', '_s' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'pixcell_medical' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', '_s' ) );
+			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'pixcell_medical' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', '_s' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'pixcell_medical' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		if ( ! ispixcell_medicalingle() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
 			comments_popup_link(
 				sprintf(
 					wp_kses(
 						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', '_s' ),
+						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'pixcell_medical' ),
 						array(
 							'span' => array(
 								'class' => array(),
@@ -97,7 +97,7 @@ if ( ! function_exists( '_s_entry_footer' ) ) :
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', '_s' ),
+					__( 'Edit <span class="screen-reader-text">%s</span>', 'pixcell_medical' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -112,19 +112,19 @@ if ( ! function_exists( '_s_entry_footer' ) ) :
 	}
 endif;
 
-if ( ! function_exists( '_s_post_thumbnail' ) ) :
+if ( ! function_exists( 'pixcell_medical_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function _s_post_thumbnail() {
+	function pixcell_medical_post_thumbnail() {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
 
-		if ( is_singular() ) :
+		if ( ispixcell_medicalingular() ) :
 			?>
 
 			<div class="post-thumbnail">
@@ -149,7 +149,7 @@ if ( ! function_exists( '_s_post_thumbnail' ) ) :
 			</a>
 
 			<?php
-		endif; // End is_singular().
+		endif; // End ispixcell_medicalingular().
 	}
 endif;
 

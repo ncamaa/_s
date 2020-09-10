@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package _s
+ * @package pixcell_medical
  */
 
 get_header();
@@ -34,5 +34,5 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
+getpixcell_medicalidebar();
 get_footer();
