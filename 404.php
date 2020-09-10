@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main check">
+	<main id="primary" class="site-main">
 
 		<section class="error-404 not-found">
 			<header class="page-header">
@@ -21,7 +21,7 @@ get_header();
 				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'pixcell_medical' ); ?></p>
 
 					<?php
-					getpixcell_medicalearch_form();
+					get_search_form();
 
 					the_widget( 'WP_Widget_Recent_Posts' );
 					?>
@@ -45,7 +45,7 @@ get_header();
 
 					<?php
 					/* translators: %1$s: smiley */
-					$pixcell_medical_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'pixcell_medical' ), convertpixcell_medicalmilies( ':)' ) ) . '</p>';
+					$pixcell_medical_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'pixcell_medical' ), convert_smilies( ':)' ) ) . '</p>';
 					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$pixcell_medical_archive_content" );
 
 					the_widget( 'WP_Widget_Tag_Cloud' );

@@ -7,11 +7,11 @@
  * @package pixcell_medical
  */
 
-if ( ! is_activepixcell_medicalidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }
 ?>
 
 <aside id="secondary" class="widget-area">
-	<?php dynamicpixcell_medicalidebar( 'sidebar-1' ); ?>
+	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 </aside><!-- #secondary -->

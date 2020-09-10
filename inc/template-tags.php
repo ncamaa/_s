@@ -12,13 +12,13 @@ if ( ! function_exists( 'pixcell_medical_posted_on' ) ) :
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
 	function pixcell_medical_posted_on() {
-		$timepixcell_medicaltring = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$timepixcell_medicaltring = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 		}
 
-		$timepixcell_medicaltring = sprintf(
-			$timepixcell_medicaltring,
+		$time_string = sprintf(
+			$time_string,
 			esc_attr( get_the_date( DATE_W3C ) ),
 			esc_html( get_the_date() ),
 			esc_attr( get_the_modified_date( DATE_W3C ) ),
@@ -28,7 +28,7 @@ if ( ! function_exists( 'pixcell_medical_posted_on' ) ) :
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
 			esc_html_x( 'Posted on %s', 'post date', 'pixcell_medical' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $timepixcell_medicaltring . '</a>'
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -74,7 +74,7 @@ if ( ! function_exists( 'pixcell_medical_entry_footer' ) ) :
 			}
 		}
 
-		if ( ! ispixcell_medicalingle() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
 			comments_popup_link(
 				sprintf(
@@ -124,7 +124,7 @@ if ( ! function_exists( 'pixcell_medical_post_thumbnail' ) ) :
 			return;
 		}
 
-		if ( ispixcell_medicalingular() ) :
+		if ( is_singular() ) :
 			?>
 
 			<div class="post-thumbnail">
@@ -149,7 +149,7 @@ if ( ! function_exists( 'pixcell_medical_post_thumbnail' ) ) :
 			</a>
 
 			<?php
-		endif; // End ispixcell_medicalingular().
+		endif; // End is_singular().
 	}
 endif;
 

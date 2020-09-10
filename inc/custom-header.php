@@ -14,10 +14,10 @@
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses pixcell_medical_headerpixcell_medicaltyle()
+ * @uses pixcell_medical_header_style()
  */
-function pixcell_medical_custom_headerpixcell_medicaletup() {
-	add_themepixcell_medicalupport(
+function pixcell_medical_custom_header_setup() {
+	add_theme_support(
 		'custom-header',
 		apply_filters(
 			'pixcell_medical_custom_header_args',
@@ -27,27 +27,27 @@ function pixcell_medical_custom_headerpixcell_medicaletup() {
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'pixcell_medical_headerpixcell_medicaltyle',
+				'wp-head-callback'   => 'pixcell_medical_header_style',
 			)
 		)
 	);
 }
-add_action( 'afterpixcell_medicaletup_theme', 'pixcell_medical_custom_headerpixcell_medicaletup' );
+add_action( 'after_setup_theme', 'pixcell_medical_custom_header_setup' );
 
-if ( ! function_exists( 'pixcell_medical_headerpixcell_medicaltyle' ) ) :
+if ( ! function_exists( 'pixcell_medical_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see pixcell_medical_custom_headerpixcell_medicaletup().
+	 * @see pixcell_medical_custom_header_setup().
 	 */
-	function pixcell_medical_headerpixcell_medicaltyle() {
+	function pixcell_medical_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*
 		 * If no custom options for text are set, let's bail.
-		 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: add_themepixcell_medicalupport( 'custom-header' ).
+		 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: add_theme_support( 'custom-header' ).
 		 */
-		if ( get_themepixcell_medicalupport( 'custom-header', 'default-text-color' ) === $header_text_color ) {
+		if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
 			return;
 		}
 

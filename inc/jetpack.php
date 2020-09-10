@@ -14,22 +14,22 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function pixcell_medical_jetpackpixcell_medicaletup() {
+function pixcell_medical_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
-	add_themepixcell_medicalupport(
+	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => 'pixcell_medical_infinitepixcell_medicalcroll_render',
+			'render'    => 'pixcell_medical_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
 
 	// Add theme support for Responsive Videos.
-	add_themepixcell_medicalupport( 'jetpack-responsive-videos' );
+	add_theme_support( 'jetpack-responsive-videos' );
 
 	// Add theme support for Content Options.
-	add_themepixcell_medicalupport(
+	add_theme_support(
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
@@ -48,15 +48,15 @@ function pixcell_medical_jetpackpixcell_medicaletup() {
 		)
 	);
 }
-add_action( 'afterpixcell_medicaletup_theme', 'pixcell_medical_jetpackpixcell_medicaletup' );
+add_action( 'after_setup_theme', 'pixcell_medical_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function pixcell_medical_infinitepixcell_medicalcroll_render() {
+function pixcell_medical_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
-		if ( ispixcell_medicalearch() ) :
+		if ( is_search() ) :
 			get_template_part( 'template-parts/content', 'search' );
 		else :
 			get_template_part( 'template-parts/content', get_post_type() );

@@ -11,9 +11,9 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function pixcell_medical_customize_register( $wp_customize ) {
-	$wp_customize->getpixcell_medicaletting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->getpixcell_medicaletting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->getpixcell_medicaletting( 'header_textcolor' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial(
@@ -56,6 +56,6 @@ function pixcell_medical_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function pixcell_medical_customize_preview_js() {
-	wp_enqueuepixcell_medicalcript( 'pixcell_medical-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), pixcell_medical_VERSION, true );
+	wp_enqueue_script( 'pixcell_medical-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
 }
 add_action( 'customize_preview_init', 'pixcell_medical_customize_preview_js' );

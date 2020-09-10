@@ -34,5 +34,5 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-getpixcell_medicalidebar();
+get_sidebar();
 get_footer();
